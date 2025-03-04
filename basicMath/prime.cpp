@@ -2,22 +2,19 @@
 using namespace std;
 
 void AllDivision(){
-    int n;
-    vector<int> vec;
+    int n,count=0;
     cin>>n;
     for(int i = 1; i <= sqrt(n);i++){
         if(n%i==0){
-            vec.push_back(i);
-
-            if((n/i)!=i){
-                vec.push_back(n/i);
-            }
+    count++;
         }
  }
-sort(vec.begin(),vec.end());
-for(auto i:vec){
-    cout<<i<<" ";
+if(count == 1){
+    cout<<"Prime"<<" ";
 }
+    else{
+        cout<<"Not prime"<< " ";
+    }
 }
     
 
