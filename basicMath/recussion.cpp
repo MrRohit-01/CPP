@@ -1,19 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void print(int count){
+void PrintNo(int n){
     
-if(count == 3){
-    return;
+    n++;
+    if(n>100){
+        return;
+    }
+    PrintNo(n);
+    cout<<n<<endl;
 }
-    cout<<count<<endl;
-    count++;
-    print(count);
-}
-    
 
 int main(){
-    int count=0;
-   print(count);
-    return 0;
-} 
+    int n;
+    cin>>n;
+    PrintNo(n);
+}
