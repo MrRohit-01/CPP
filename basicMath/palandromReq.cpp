@@ -1,17 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void sumValue(int n,int sum){
-    if(n == 0){
-        cout<<sum;
-        return;
+bool f(int i,string n,int len){
+    if(i >= len/2){
+        return true;
     }
-    sumValue(n-1,sum+n);
+    if(n[i]!=n[len-i-1]) return false;
+   return f(i+1,n,len);
 }
 
 int main(){
-    int n;
+    string n;
     cin>>n;
-    sumValue(n,0);
+    int i=0;
+    cout<< (f(i,n,n.length())?"True":"False");
     return 0;
 }
