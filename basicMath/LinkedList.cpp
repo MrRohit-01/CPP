@@ -42,9 +42,50 @@ int findInLl(node* head,int target){
     }
     return false;
 }
+
+
+node* deleteInLl(node* head,int targetIndex){
+    if(targetIndex ==0){
+        head=head->next;
+        return head;
+    }
+    node* mover = head;
+    int count =0;
+    while(mover){
+
+        count++;
+        if(count==targetIndex){
+            mover->next = mover->next->next;
+        }
+        mover = mover->next;
+    }
+    return head;
+}
+
+node* insertInLl(node* head, int value, int targetIndex){
+    if(targetIndex ==0){
+        node* temp = new node(value,head->next);
+        return temp;
+    }
+    node* mover = head;
+    int count =1;
+    while(mover){
+
+        if(count==targetIndex){
+            node* temp = new node(value,mover->next);
+            mover->next = temp;
+        }
+        mover = mover->next;
+        count++;
+    }
+    return head;
+}
+
 int main(){
     vector<int> arr ={12,3,4,5};
     node* head = llFromArr(arr);
+    head = deleteInLl(head,2);
+    head = insertInLl(head,44,0);
     node* temp = head;
     while(temp){
         cout<<temp->data<<" ";
