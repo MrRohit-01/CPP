@@ -1,17 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int f(int i){
-    if(i<=1){
-        return i;
-    }
-    return f(i-1)+f(i-2);
-   
+int f(int arr,int n){
+for()
+    hash[]
 }
 
 int main(){
-   int n;
-    cin>>n;
-   cout<< f(n);
+   int arr[],n=0;
+   for(int i=0;i<=n,i++) cin>>arr[];
+    f(arr,n);
     return 0;
 }
