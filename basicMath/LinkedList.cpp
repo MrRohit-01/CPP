@@ -24,10 +24,10 @@ return head;
 }
 int lengthLl(node* head){
     node* mover = head;
-    int count =1;
+    int count =0;
     while(mover){
-        mover = mover->next;
         count++;
+        mover = mover->next;
     }
     return count;
 }
@@ -46,7 +46,9 @@ int findInLl(node* head,int target){
 
 node* deleteInLl(node* head,int targetIndex){
     if(targetIndex ==0){
+        node* temp = head;
         head=head->next;
+        delete temp;
         return head;
     }
     node* mover = head;
@@ -54,17 +56,21 @@ node* deleteInLl(node* head,int targetIndex){
     while(mover){
 
         count++;
-        if(count==targetIndex){
+        if(count==targetIndex && mover->next){
+            node* temp = mover->next;
             mover->next = mover->next->next;
+            delete temp;
+            break;
         }
         mover = mover->next;
     }
+ 
     return head;
 }
 
 node* insertInLl(node* head, int value, int targetIndex){
     if(targetIndex ==0){
-        node* temp = new node(value,head->next);
+        node* temp = new node(value,head);
         return temp;
     }
     node* mover = head;
@@ -84,8 +90,8 @@ node* insertInLl(node* head, int value, int targetIndex){
 int main(){
     vector<int> arr ={12,3,4,5};
     node* head = llFromArr(arr);
-    head = deleteInLl(head,2);
-    head = insertInLl(head,44,0);
+    head = deleteInLl(head,3);
+    head = insertInLl(head,44,2);
     node* temp = head;
     while(temp){
         cout<<temp->data<<" ";
