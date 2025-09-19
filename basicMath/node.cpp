@@ -31,13 +31,26 @@ int lengthLl(node* head){
     }
     return count;
 }
+
+int findInLl(node* head,int target){
+    node* mover = head;
+    int count =1;
+    while(mover){
+        if(mover->data==target)return true;
+        mover = mover->next;
+        count++;
+    }
+    return false;
+}
 int main(){
     vector<int> arr ={12,3,4,5};
     node* head = llFromArr(arr);
     node* temp = head;
-    // while(temp){
-    //     cout<<temp->data<<" ";
-    //     temp = temp->next;
-    // }
-    cout<<lengthLl(head)<<" ";
+    while(temp){
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+    cout<<endl;
+    cout<<lengthLl(head)<<endl;
+    cout<<findInLl(head,3)<<endl;
 }
