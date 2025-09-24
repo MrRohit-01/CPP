@@ -31,23 +31,23 @@ dbNode<T>* deleteNode(dbNode<T>* head,int index){
     dbNode<T>* temp = head;
     if(index ==0){
         temp=head->next;
-        head->next = nullptr;
+        temp->prev = nullptr;
         delete head; 
-    }
-    int count =0;
-    dbNode<T>* mover =temp;
-    while(mover){
-        if(count +1== index){
-        temp->next = nullptr;
-    temp = mover->next; 
-        temp->prev=nullptr;
-        delete mover;
         return temp;
+    }
+    int count =1;
+    dbNode<T>* mover =temp->next;
+    while(mover){
+        if(count == index){
+            temp = mover; 
+            temp->prev->next = temp->next;
+            temp->next->prev = temp->prev;
+            delete temp;
+            return head;
 
         }
+        mover = mover->next;
         count++;
-        temp = temp->next;
-        mover = temp->next;
 
     }
     return head;
@@ -56,9 +56,9 @@ dbNode<T>* deleteNode(dbNode<T>* head,int index){
 
 
 int main(){
-    vector<int> arr ={1,3,4,6,8};
+    vector<int> arr ={1,3,4,6,8,6,4 ,2, 5, 7};
     dbNode<int>* head = addNode(arr);
-        head = deleteNode(head, 1);
+        head = deleteNode(head, 5);
         dbNode<int>* temp = head;
 while(temp){
     cout<<temp->data<<" ";
