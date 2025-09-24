@@ -52,13 +52,40 @@ dbNode<T>* deleteNode(dbNode<T>* head,int index){
     }
     return head;
 }
+template<typename T>
+dbNode<T>* addNode(dbNode<T>* head,T value,int index){
+    // dbNode<T>* temp = head;
+    dbNode<T>* add = new dbNode<T>(value);
+    if(index ==0){
+        head->prev = add;
+        add->next = head;
+        return add;
+    }
+    int count =1;
+    dbNode<T>* mover =head;
+    while(mover){
+        if(count == index){
 
+        add->next=mover->next;
+        add->prev =mover;
+        mover->next->prev = add;
+        mover->next = add;
+        return head;
+
+        }
+        mover = mover->next;
+        count++;
+
+    }
+    return head;
+}
 
 
 int main(){
     vector<int> arr ={1,3,4,6,8,6,4 ,2, 5, 7};
     dbNode<int>* head = addNode(arr);
-        head = deleteNode(head, 5);
+        head = deleteNode(head, 4);
+        head = addNode(head,56,4);
         dbNode<int>* temp = head;
 while(temp){
     cout<<temp->data<<" ";
