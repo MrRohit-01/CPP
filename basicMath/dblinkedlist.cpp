@@ -89,11 +89,30 @@ bool findNode(dbNode<T>* head,T value){
     }
     return false;
 }
+template<typename T>
+dbNode<T>* reverseNode(dbNode<T>* head){
+    dbNode<T>* temp =head;
+    dbNode<T>* mover =temp;
+    while(mover){
+        temp =mover;
+        mover = mover->next;
+        
+    }
+    return temp;
+}
 
 
 int main(){
     vector<int> arr ={1,3,4,6,8,6,4 ,2, 5, 7};
     dbNode<int>* head = addNode(arr);
+    dbNode<int>* last = reverseNode(head);
+    while(last){
+        cout<<last->data<<" ";
+        last = last->prev;
+        
+    }
+cout<<endl;
+
         head = deleteNode(head, 1);
         head = addNode(head,56,10);
         bool bool1 = findNode(head,3);
@@ -104,5 +123,6 @@ while(temp){
 };
 cout<<endl;
 cout<<bool1<<" ";
+
 return 0;
 }
