@@ -79,18 +79,30 @@ dbNode<T>* addNode(dbNode<T>* head,T value,int index){
     }
     return head;
 }
+template<typename T>
+bool findNode(dbNode<T>* head,T value){
+    dbNode<T>* mover =head;
+    while(mover){
+        if(mover->data==value)return true;
+        mover = mover->next;
+
+    }
+    return false;
+}
 
 
 int main(){
     vector<int> arr ={1,3,4,6,8,6,4 ,2, 5, 7};
     dbNode<int>* head = addNode(arr);
-        head = deleteNode(head, 4);
-        head = addNode(head,56,4);
+        head = deleteNode(head, 1);
+        head = addNode(head,56,10);
+        bool bool1 = findNode(head,3);
         dbNode<int>* temp = head;
 while(temp){
     cout<<temp->data<<" ";
-    // cout<<"done"<<endl; 
     temp = temp->next;
 };
+cout<<endl;
+cout<<bool1<<" ";
 return 0;
 }
